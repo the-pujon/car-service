@@ -1,13 +1,13 @@
 type TRole = 'admin' | 'user';
 
-type TAddress = {
+export type TAddress = {
     street: string;
     city: string;
     state: string;
     zip: string;
 }
 
-type TUser = {
+export type TUser = {
     name: string;
     email: string;
     password: string;
@@ -15,6 +15,3 @@ type TUser = {
     role: TRole;
     address: TAddress;
 }
-
-
-export default TUser
