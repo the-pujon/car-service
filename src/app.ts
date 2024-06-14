@@ -7,8 +7,6 @@ const app: Application = express()
 app.use(express.json())
 app.use(cors())
 
-let p
-console.log(p)
 
 app.get("/",(req: Request,res: Response) => {
     res.status(httpStatus.OK).json({
