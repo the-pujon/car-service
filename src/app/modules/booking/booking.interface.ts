@@ -1,15 +1,3 @@
-//export type TVehicleType =
-//  | "car"
-//  | "truck"
-//  | "SUV"
-//  | "van"
-//  | "motorcycle"
-//  | "bus"
-//  | "electricVehicle"
-//  | "hybridVehicle"
-//  | "bicycle"
-//  | "tractor";
-
 export type TBooking = {
   customer: string;
   service: string;

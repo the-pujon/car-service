@@ -1,7 +1,7 @@
 export type TService = {
-    name: string;
-    description: string;
-    price: number;
-    duration: string;
-    isDelete: boolean;
-}
+  name: string;
+  description: string;
+  price: number;
+  duration: number;
+  isDelete: boolean;
+};
