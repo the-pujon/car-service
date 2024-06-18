@@ -3,6 +3,7 @@ import cors from "cors";
 import httpStatus from "http-status";
 import router from "./app/routes";
 import globalErrorHandler from "./app/middlewares/globalErrorHandler";
+import notFoundRouteHandler from "./app/middlewares/notFoundRouteHandler";
 
 const app: Application = express();
 
@@ -18,6 +19,7 @@ app.get("/", (req: Request, res: Response) => {
   });
 });
 
+app.use(notFoundRouteHandler);
 app.use(globalErrorHandler);
 
 export default app;
