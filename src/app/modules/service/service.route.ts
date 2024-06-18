@@ -10,4 +10,7 @@ route.post(
   StudentControllers.createService,
 );
 
+route.get("/", StudentControllers.getService);
+route.get("/:id", StudentControllers.getServiceById);
+
 export const ServiceRoutes = route;
