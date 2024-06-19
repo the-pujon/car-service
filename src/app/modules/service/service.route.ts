@@ -1,16 +1,24 @@
 import express from "express";
-import { StudentControllers } from "./service.controller";
+import { ServiceControllers } from "./service.controller";
 import validateRequest from "../../middlewares/validateRequest";
-import ServiceCreateValidation from "./service.validation";
+import {
+  ServiceCreateValidation,
+  ServiceUpdateValidation,
+} from "./service.validation";
 const route = express.Router();
 
 route.post(
   "/",
   validateRequest(ServiceCreateValidation),
-  StudentControllers.createService,
+  ServiceControllers.createService,
 );
 
-route.get("/", StudentControllers.getService);
-route.get("/:id", StudentControllers.getServiceById);
-route.delete("/:id", StudentControllers.deleteServiceByID);
+route.get("/", ServiceControllers.getService);
+route.get("/:id", ServiceControllers.getServiceById);
+route.patch(
+  "/:id",
+  validateRequest(ServiceUpdateValidation),
+  ServiceControllers.updateServiceByID,
+);
+route.delete("/:id", ServiceControllers.deleteServiceByID);
 export const ServiceRoutes = route;

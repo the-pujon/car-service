@@ -29,9 +29,22 @@ const deleteServiceByIDFromDB = async (id: string) => {
   return result;
 };
 
+//update service
+const updateServiceByIDIntoDB = async (
+  id: string,
+  payload: Partial<TService>,
+) => {
+  const result = await ServiceModel.findByIdAndUpdate(id, payload, {
+    new: true,
+  }).exec();
+
+  return result;
+};
+
 export const CarServiceServices = {
   createServiceIntoDB,
   getServicesFromDB,
   getServiceByIDFromDB,
   deleteServiceByIDFromDB,
+  updateServiceByIDIntoDB,
 };

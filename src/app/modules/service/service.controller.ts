@@ -53,10 +53,26 @@ const deleteServiceByID = catchAsync(async (req, res) => {
   });
 });
 
+//update service controller
+const updateServiceByID = catchAsync(async (req, res) => {
+  const result = await CarServiceServices.updateServiceByIDIntoDB(
+    req.params.id,
+    req.body,
+  );
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Service updated successfully",
+    data: result,
+  });
+});
+
 //exporting all controllers
-export const StudentControllers = {
+export const ServiceControllers = {
   createService,
   getService,
   getServiceById,
   deleteServiceByID,
+  updateServiceByID,
 };

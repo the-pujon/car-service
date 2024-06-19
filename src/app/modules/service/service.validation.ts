@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const ServiceCreateValidation = z.object({
+export const ServiceCreateValidation = z.object({
   body: z.object({
     name: z.string(),
     description: z.string(),
@@ -9,4 +9,11 @@ const ServiceCreateValidation = z.object({
   }),
 });
 
-export default ServiceCreateValidation;
+export const ServiceUpdateValidation = z.object({
+  body: z.object({
+    name: z.string().optional(),
+    description: z.string().optional(),
+    price: z.number().optional(),
+    duration: z.number().optional(),
+  }),
+});
