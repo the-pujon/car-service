@@ -39,9 +39,24 @@ const getServiceById = catchAsync(async (req, res) => {
   });
 });
 
+//delete single service controller
+const deleteServiceByID = catchAsync(async (req, res) => {
+  const result = await CarServiceServices.deleteServiceByIDFromDB(
+    req.params.id,
+  );
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Service deleted successfully",
+    data: result,
+  });
+});
+
 //exporting all controllers
 export const StudentControllers = {
   createService,
   getService,
   getServiceById,
+  deleteServiceByID,
 };

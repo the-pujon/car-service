@@ -22,8 +22,16 @@ const getServiceByIDFromDB = async (id: string) => {
   return result;
 };
 
+//delete single service
+const deleteServiceByIDFromDB = async (id: string) => {
+  const result = await ServiceModel.findByIdAndDelete(id).exec();
+
+  return result;
+};
+
 export const CarServiceServices = {
   createServiceIntoDB,
   getServicesFromDB,
   getServiceByIDFromDB,
+  deleteServiceByIDFromDB,
 };

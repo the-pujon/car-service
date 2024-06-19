@@ -12,5 +12,5 @@ route.post(
 
 route.get("/", StudentControllers.getService);
 route.get("/:id", StudentControllers.getServiceById);
-
+route.delete("/:id", StudentControllers.deleteServiceByID);
 export const ServiceRoutes = route;
