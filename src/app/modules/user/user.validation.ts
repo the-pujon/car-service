@@ -6,11 +6,7 @@ export const CreateUserValidation = z.object({
     email: z.string().email(),
     password: z.string().min(8),
     phone: z.string(),
-    address: z.object({
-      street: z.string(),
-      city: z.string(),
-      state: z.string(),
-      zip: z.string(),
-    }),
+    role: z.enum(["user", "admin"]),
+    address: z.string(),
   }),
 });
