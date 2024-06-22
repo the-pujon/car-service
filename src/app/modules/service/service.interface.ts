@@ -3,5 +3,5 @@ export type TService = {
   description: string;
   price: number;
   duration: number;
-  isDelete: boolean;
+  isDeleted: boolean;
 };
