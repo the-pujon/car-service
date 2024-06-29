@@ -3,15 +3,18 @@ import { TBooking } from "./booking.interface";
 
 const BookingSchema = new Schema<TBooking>({
   customer: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: "User",
     required: true,
   },
   service: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: "Service",
     required: true,
   },
   slot: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: "Slot",
     required: true,
   },
   vehicleType: {
@@ -47,5 +50,4 @@ const BookingSchema = new Schema<TBooking>({
   },
 });
 
-
-export const BookingModel = model<TBooking>('Booking', BookingSchema)
+export const BookingModel = model<TBooking>("Booking", BookingSchema);
