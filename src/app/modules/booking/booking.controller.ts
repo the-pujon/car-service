@@ -4,7 +4,7 @@ import sendResponse from "../../utils/sendResponse";
 import { BookingService } from "./booking.service";
 
 const createBooking = catchAsync(async (req, res) => {
-  const result = await BookingService.createBookingIntoDB(req.body);
+  const result = await BookingService.createBookingIntoDB(req.user, req.body);
 
   //console.log(result);
 
