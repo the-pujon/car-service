@@ -3,7 +3,7 @@ import AppError from "../../errors/AppError";
 import { TUser } from "./auth.interface";
 import { UserModel } from "./auth.model";
 import { JwtPayload } from "jsonwebtoken";
-import { createToken } from "./auth.utils";
+import { createToken, omitPassword } from "./auth.utils";
 import config from "../../config";
 
 const signupUserIntoDB = async (payload: TUser) => {
@@ -45,7 +45,11 @@ const loginUserService = async (payload: JwtPayload) => {
     "5h",
   );
 
-  return { token, user };
+  const loggedUserWithoutPassword = omitPassword(user);
+
+  console.log("logger", loggedUserWithoutPassword);
+
+  return { token, user: loggedUserWithoutPassword };
 };
 
 export const UserService = {

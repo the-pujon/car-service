@@ -8,9 +8,16 @@ const router = Router();
 
 router.post(
   "/",
-  auth("user", "admin"),
+  auth("user"),
   validateRequest(BookingCreateValidation),
   BookingControllers.createBooking,
+);
+
+router.get(
+  "/",
+  auth("admin"),
+  //validateRequest(BookingCreateValidation),
+  BookingControllers.getBooking,
 );
 
 export const BookingRoutes = router;

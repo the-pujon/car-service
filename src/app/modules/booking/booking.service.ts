@@ -83,6 +83,17 @@ const createBookingIntoDB = async (
   }
 };
 
+const getBookingFromDB = async () => {
+  const result = await BookingModel.find().populate([
+    "customer",
+    "service",
+    "slot",
+  ]);
+
+  return result;
+};
+
 export const BookingService = {
   createBookingIntoDB,
+  getBookingFromDB,
 };
