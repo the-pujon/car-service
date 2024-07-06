@@ -8,12 +8,12 @@ const router = Router();
 
 router.post(
   "/",
-  auth("user", "admin"),
+  auth("user"),
   validateRequest(BookingCreateValidation),
   BookingControllers.createBooking,
 );
 
-router.get("/", auth("admin"), BookingControllers.getBooking);
+router.get("/", auth("user", "admin"), BookingControllers.getBooking);
 
 router.get(
   "/my-bookings",

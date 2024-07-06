@@ -67,8 +67,6 @@ const updateServiceByID = catchAsync(async (req, res) => {
     req.body,
   );
 
-  console.log(req.params.id);
-
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
