@@ -47,8 +47,6 @@ const loginUserService = async (payload: JwtPayload) => {
 
   const loggedUserWithoutPassword = omitPassword(user);
 
-  console.log("logger", loggedUserWithoutPassword);
-
   return { token, user: loggedUserWithoutPassword };
 };
 
