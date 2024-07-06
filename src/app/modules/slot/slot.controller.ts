@@ -2,6 +2,7 @@ import httpStatus from "http-status";
 import catchAsync from "../../utils/catchAsync.";
 import sendResponse from "../../utils/sendResponse";
 import { SlotServices } from "./slot.service";
+import { noDataFoundResponse } from "../../utils/noDataFoundResponse";
 
 const createSlotController = catchAsync(async (req, res) => {
   const result = await SlotServices.createSlotIntoDB(req.body);
@@ -20,6 +21,9 @@ const getSlotController = catchAsync(async (req, res) => {
     date as string,
     serviceId as string,
   );
+
+  //if there is no data
+  noDataFoundResponse(res, result);
 
   sendResponse(res, {
     success: true,

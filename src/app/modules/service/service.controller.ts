@@ -2,6 +2,7 @@ import httpStatus from "http-status";
 import catchAsync from "../../utils/catchAsync.";
 import sendResponse from "../../utils/sendResponse";
 import { CarServiceServices } from "./service.service";
+import { noDataFoundResponse } from "../../utils/noDataFoundResponse";
 
 //create service controller
 const createService = catchAsync(async (req, res) => {
@@ -19,6 +20,9 @@ const createService = catchAsync(async (req, res) => {
 const getService = catchAsync(async (req, res) => {
   const result = await CarServiceServices.getServicesFromDB();
 
+  //if there is no data
+  noDataFoundResponse(res, result);
+
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -30,6 +34,9 @@ const getService = catchAsync(async (req, res) => {
 //get single service controller
 const getServiceById = catchAsync(async (req, res) => {
   const result = await CarServiceServices.getServiceByIDFromDB(req.params.id);
+
+  //if there is no data
+  noDataFoundResponse(res, result);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,

@@ -2,6 +2,7 @@ import httpStatus from "http-status";
 import catchAsync from "../../utils/catchAsync.";
 import sendResponse from "../../utils/sendResponse";
 import { BookingService } from "./booking.service";
+import { noDataFoundResponse } from "../../utils/noDataFoundResponse";
 
 const createBooking = catchAsync(async (req, res) => {
   const result = await BookingService.createBookingIntoDB(req.user, req.body);
@@ -19,6 +20,9 @@ const createBooking = catchAsync(async (req, res) => {
 const getBooking = catchAsync(async (req, res) => {
   const result = await BookingService.getBookingFromDB();
 
+  //if there is no data
+  noDataFoundResponse(res, result);
+
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
@@ -29,6 +33,9 @@ const getBooking = catchAsync(async (req, res) => {
 
 const getUserBooking = catchAsync(async (req, res) => {
   const result = await BookingService.getUserBookingsFromDB(req.user);
+
+  //if there is no data
+  noDataFoundResponse(res, result);
 
   sendResponse(res, {
     success: true,
