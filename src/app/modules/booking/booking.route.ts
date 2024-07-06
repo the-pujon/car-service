@@ -8,16 +8,17 @@ const router = Router();
 
 router.post(
   "/",
-  auth("user"),
+  auth("user", "admin"),
   validateRequest(BookingCreateValidation),
   BookingControllers.createBooking,
 );
 
+router.get("/", auth("admin"), BookingControllers.getBooking);
+
 router.get(
-  "/",
-  auth("admin"),
-  //validateRequest(BookingCreateValidation),
-  BookingControllers.getBooking,
+  "/my-bookings",
+  auth("user", "admin"),
+  BookingControllers.getUserBooking,
 );
 
 export const BookingRoutes = router;

@@ -27,7 +27,19 @@ const getBooking = catchAsync(async (req, res) => {
   });
 });
 
+const getUserBooking = catchAsync(async (req, res) => {
+  const result = await BookingService.getUserBookingsFromDB(req.user);
+
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: "User bookings retrieved successfully",
+    data: result,
+  });
+});
+
 export const BookingControllers = {
   createBooking,
   getBooking,
+  getUserBooking,
 };

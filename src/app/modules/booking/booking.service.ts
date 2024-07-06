@@ -39,10 +39,11 @@ const createBookingIntoDB = async (
     );
   }
 
-  const customerId = await UserModel.findOne(
-    { email: userData.email },
-    { _id: 1 },
-  );
+  const customerId = await UserModel.findOne({ email: userData.email });
+
+  if (!customerId) {
+    throw new AppError(httpStatus.BAD_REQUEST, "User not found");
+  }
 
   const id = customerId?._id as Types.ObjectId;
 
@@ -93,7 +94,21 @@ const getBookingFromDB = async () => {
   return result;
 };
 
+const getUserBookingsFromDB = async (user: JwtPayload) => {
+  const getCustomer = await UserModel.findOne(
+    { email: user.email },
+    { _id: 1 },
+  );
+
+  const result = await BookingModel.find({
+    customer: getCustomer?._id,
+  }).populate(["customer", "service", "slot"]);
+
+  return result;
+};
+
 export const BookingService = {
   createBookingIntoDB,
   getBookingFromDB,
+  getUserBookingsFromDB,
 };
