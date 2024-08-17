@@ -43,6 +43,12 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
+// deleting password before sending res
+userSchema.post("save", function (doc, next) {
+  doc.set("password", undefined, { strict: false });
+  next();
+});
+
 //static method for finding user
 userSchema.statics.isUserExist = async function (email: string) {
   return await UserModel.findOne({ email }).select("+password");

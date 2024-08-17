@@ -7,16 +7,16 @@ import { createToken, omitPassword } from "./auth.utils";
 import config from "../../config";
 
 const signupUserIntoDB = async (payload: TUser) => {
-  const existingUser = UserModel.findOne({ email: payload.email });
+  const existingUser = await UserModel.findOne({ email: payload.email });
 
-  if (!existingUser) {
+  if (existingUser) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
       "User already exist. Please use deferent email",
     );
   }
 
-  const result = UserModel.create(payload);
+  const result = await UserModel.create(payload);
 
   return result;
 };
@@ -42,7 +42,7 @@ const loginUserService = async (payload: JwtPayload) => {
   const token = createToken(
     jwtPayload,
     config.jwt_access_secret as string,
-    "5h",
+    "10h",
   );
 
   const loggedUserWithoutPassword = omitPassword(user);

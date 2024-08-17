@@ -60,43 +60,17 @@ const createSlotIntoDB = async (payload: TSlot) => {
 //getting slots
 const getSlotsFromDB = async (date: string, serviceID: string) => {
   let result;
-  let message = "";
 
   if (date && serviceID) {
     result = await SlotModel.find({ service: serviceID, date }).populate(
       "service",
     );
-
-    //check if result is empty array
-    if (result.length === 0) {
-      message = `No slots found for this serviceId: ${serviceID} and this date: ${date}`;
-    }
   } else if (date) {
     result = await SlotModel.find({ date }).populate("service");
-
-    //check if result is empty array
-    if (result.length === 0) {
-      message = `No slots found for this date: ${date}`;
-    }
   } else if (serviceID) {
     result = await SlotModel.find({ service: serviceID }).populate("service");
-
-    //check if result is empty array
-    if (result.length === 0) {
-      message = `No slots found for this serviceId: ${serviceID}`;
-    }
   } else {
     result = await SlotModel.find().populate("service");
-
-    //check if result is empty array
-    if (result.length === 0) {
-      message = `No slots found. Slot is empty`;
-    }
-  }
-
-  //finally throw error if result is an empty array
-  if (result.length === 0) {
-    throw new AppError(httpStatus.NOT_FOUND, message);
   }
 
   return result;

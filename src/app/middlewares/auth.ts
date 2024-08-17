@@ -12,7 +12,10 @@ export const auth = (...requiredRoles: ("admin" | "user")[]) => {
 
     //if token can't fount
     if (!token) {
-      throw new AppError(httpStatus.UNAUTHORIZED, "You are not authorized");
+      throw new AppError(
+        httpStatus.UNAUTHORIZED,
+        "You are not authorized. Login first",
+      );
     }
 
     const decoded = jwt.verify(token, config.jwt_access_secret as string);
