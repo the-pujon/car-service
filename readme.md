@@ -7,7 +7,7 @@ This is the backend codebase for a Car service website
 ## Setup
 
 1. Install dependencies: `npm install`
-2. Start the server: `npm start:dev` for development with nodemon.
+2. Start the server: `npm run start:dev` for development with nodemon.
 3. The server will be running on `http://localhost:5000`.
 
 <!--## Project Structure
@@ -64,11 +64,11 @@ This is the backend codebase for a Car service website
 
 ## Scripts
 
-- `npm start:dev`: Starts the server.
+- `npm run start:dev`: Starts the server.
 
 ## Project Demo
 
-Click [here](https://skills-voyage-elm.netlify.app/) to view the Skills Voyage project.
+Click [here](https://car-service-pi.vercel.app/) to view the Skills Voyage project.
 
 <!--For Frontend, click [here](https://github.com/the-pujon/skill-voyage-frontend).-->
 
@@ -78,16 +78,16 @@ Click [here](https://skills-voyage-elm.netlify.app/) to view the Skills Voyage p
 
 ### Admin Login:
 
-- **Email:** pujondasauvi@gmail.com
-- **Password:** password123456789
+- **Email:** web@programming-hero.com
+- **Password:** ph-password
 
-### Instructor Login:
+### User Login:
 
-- **Email:** auvidas@gmail.com
-- **Password:** password123456789
+- **Email:** webcoder@programming-hero.com
+- **Password:** ph-password
 
 ---
 
 <div align="center">
-  <a href="https://skills-voyage-elm.netlify.app/">Explore the Skills Voyage Platform</a>
+  <a href="https://car-service-pi.vercel.app/">Explore the car service api</a>
 </div>
