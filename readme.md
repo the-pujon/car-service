@@ -4,20 +4,35 @@
 
 This is the backend codebase for a Car service website
 
+## Project Live Link
+
+Click [here](https://car-service-pi.vercel.app/) to view the Car Service API.
+
+#### Video Overview Link: [Overview](https://drive.google.com/file/d/1YTSaUD5MC42TmUiFlXFdeaBWhncD_kKE/view?usp=sharing)
+
 ## Setup
 
 1. Install dependencies: `npm install`
 2. Start the server: `npm run start:dev` for development with nodemon.
 3. The server will be running on `http://localhost:5000`.
 
-<!--## Project Structure
+## Project Structure
 
-- `src/config/db.js`: MongoDB connection setup.
-- `src/routes/`: Contains route handlers for different entities (users, instructors, classes, payments, categories).
-- `src/controllers/`: Controllers for each entity's CRUD operations.
-- `src/middlewares/auth.js`: Authentication and authorization middleware.
-- `app.js`: Main application file with configuration and route setup.
-- `package.json`: Project metadata and dependencies.-->
+```
+app
+    ├───config
+    ├───errors
+    ├───interface
+    ├───middlewares
+    ├───modules
+    │   ├───auth
+    │   ├───booking
+    │   ├───service
+    │   └───slot
+    ├───routes
+    └───utils
+
+```
 
 ## Endpoints
 
@@ -66,12 +81,6 @@ This is the backend codebase for a Car service website
 
 - `npm run start:dev`: Starts the server.
 
-## Project Demo
-
-Click [here](https://car-service-pi.vercel.app/) to view the Skills Voyage project.
-
-<!--For Frontend, click [here](https://github.com/the-pujon/skill-voyage-frontend).-->
-
 ---
 
 ## Credentials
@@ -83,8 +92,8 @@ Click [here](https://car-service-pi.vercel.app/) to view the Skills Voyage proje
 
 ### User Login:
 
-- **Email:** webcoder@programming-hero.com
-- **Password:** ph-password
+- **Email:** user@gmail.com
+- **Password:** user-password
 
 ---
 
