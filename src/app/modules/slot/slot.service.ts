@@ -62,15 +62,25 @@ const getSlotsFromDB = async (date: string, serviceID: string) => {
   let result;
 
   if (date && serviceID) {
-    result = await SlotModel.find({ service: serviceID, date }).populate(
-      "service",
-    );
+    result = await SlotModel.find({ service: serviceID, date }).populate({
+      path: "service",
+      match: { isDeleted: { $ne: true } },
+    });
   } else if (date) {
-    result = await SlotModel.find({ date }).populate("service");
+    result = await SlotModel.find({ date }).populate({
+      path: "service",
+      match: { isDeleted: { $ne: true } },
+    });
   } else if (serviceID) {
-    result = await SlotModel.find({ service: serviceID }).populate("service");
+    result = await SlotModel.find({ service: serviceID }).populate({
+      path: "service",
+      match: { isDeleted: { $ne: true } },
+    });
   } else {
-    result = await SlotModel.find().populate("service");
+    result = await SlotModel.find().populate({
+      path: "service",
+      match: { isDeleted: { $ne: true } },
+    });
   }
 
   return result;

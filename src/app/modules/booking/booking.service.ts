@@ -87,7 +87,10 @@ const createBookingIntoDB = async (
 const getBookingFromDB = async () => {
   const result = await BookingModel.find().populate([
     "customer",
-    "service",
+    {
+      path: "service",
+      match: { isDeleted: { $ne: true } },
+    },
     "slot",
   ]);
 
@@ -102,7 +105,14 @@ const getUserBookingsFromDB = async (user: JwtPayload) => {
 
   const result = await BookingModel.find({
     customer: getCustomer?._id,
-  }).populate(["customer", "service", "slot"]);
+  }).populate([
+    "customer",
+    {
+      path: "service",
+      match: { isDeleted: { $ne: true } },
+    },
+    "slot",
+  ]);
 
   return result;
 };
