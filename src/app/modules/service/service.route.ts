@@ -5,13 +5,15 @@ import {
   ServiceCreateValidation,
   ServiceUpdateValidation,
 } from "./service.validation";
-import { SlotRoutes } from "../slot/slot.route";
+//import { SlotRoutes } from "../slot/slot.route";
 import { auth } from "../../middlewares/auth";
+import { SlotControllers } from "../slot/slot.controller";
 
 const router = express.Router();
 
 //slot routes
-router.use("/slots", SlotRoutes);
+//router.use("/slots", SlotRoutes);
+router.post("/slots", auth("admin"), SlotControllers.createSlotController);
 
 router.post(
   "/",

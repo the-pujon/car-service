@@ -19,7 +19,7 @@ const userSchema = new Schema<TUser, UserStaticMethods>({
     select: 0,
   },
   phone: {
-    type: Number,
+    type: String,
     required: true,
   },
   role: {
