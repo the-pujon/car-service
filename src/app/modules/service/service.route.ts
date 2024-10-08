@@ -12,7 +12,6 @@ import { SlotControllers } from "../slot/slot.controller";
 const router = express.Router();
 
 //slot routes
-//router.use("/slots", SlotRoutes);
 router.post("/slots", auth("admin"), SlotControllers.createSlotController);
 
 router.post(
