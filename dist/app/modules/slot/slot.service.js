@@ -83,7 +83,8 @@ const getSlotsFromDB = (date, serviceID) => __awaiter(void 0, void 0, void 0, fu
             match: { isDeleted: { $ne: true } },
         });
     }
-    return result;
+    // Filter out slots with deleted services
+    return result.filter((slot) => slot.service !== null);
 });
 exports.SlotServices = {
     createSlotIntoDB,

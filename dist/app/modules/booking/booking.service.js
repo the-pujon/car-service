@@ -84,7 +84,8 @@ const getBookingFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
         },
         "slot",
     ]);
-    return result;
+    // Filter out slots with deleted services
+    return result.filter((slot) => slot.service !== null);
 });
 const getUserBookingsFromDB = (user) => __awaiter(void 0, void 0, void 0, function* () {
     const getCustomer = yield auth_model_1.UserModel.findOne({ email: user.email }, { _id: 1 });
@@ -98,7 +99,8 @@ const getUserBookingsFromDB = (user) => __awaiter(void 0, void 0, void 0, functi
         },
         "slot",
     ]);
-    return result;
+    // Filter out slots with deleted services
+    return result.filter((slot) => slot.service !== null);
 });
 exports.BookingService = {
     createBookingIntoDB,
