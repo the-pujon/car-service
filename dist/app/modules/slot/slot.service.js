@@ -60,16 +60,28 @@ const createSlotIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function
 const getSlotsFromDB = (date, serviceID) => __awaiter(void 0, void 0, void 0, function* () {
     let result;
     if (date && serviceID) {
-        result = yield slot_model_1.SlotModel.find({ service: serviceID, date }).populate("service");
+        result = yield slot_model_1.SlotModel.find({ service: serviceID, date }).populate({
+            path: "service",
+            match: { isDeleted: { $ne: true } },
+        });
     }
     else if (date) {
-        result = yield slot_model_1.SlotModel.find({ date }).populate("service");
+        result = yield slot_model_1.SlotModel.find({ date }).populate({
+            path: "service",
+            match: { isDeleted: { $ne: true } },
+        });
     }
     else if (serviceID) {
-        result = yield slot_model_1.SlotModel.find({ service: serviceID }).populate("service");
+        result = yield slot_model_1.SlotModel.find({ service: serviceID }).populate({
+            path: "service",
+            match: { isDeleted: { $ne: true } },
+        });
     }
     else {
-        result = yield slot_model_1.SlotModel.find().populate("service");
+        result = yield slot_model_1.SlotModel.find().populate({
+            path: "service",
+            match: { isDeleted: { $ne: true } },
+        });
     }
     return result;
 });
