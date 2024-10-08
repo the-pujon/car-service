@@ -94,7 +94,8 @@ const getBookingFromDB = async () => {
     "slot",
   ]);
 
-  return result;
+  // Filter out slots with deleted services
+  return result.filter((slot) => slot.service !== null);
 };
 
 const getUserBookingsFromDB = async (user: JwtPayload) => {
@@ -114,7 +115,8 @@ const getUserBookingsFromDB = async (user: JwtPayload) => {
     "slot",
   ]);
 
-  return result;
+  // Filter out slots with deleted services
+  return result.filter((slot) => slot.service !== null);
 };
 
 export const BookingService = {
