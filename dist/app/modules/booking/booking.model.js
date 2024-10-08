@@ -49,5 +49,7 @@ const BookingSchema = new mongoose_1.Schema({
         type: String,
         required: true,
     },
+}, {
+    timestamps: true,
 });
 exports.BookingModel = (0, mongoose_1.model)("Booking", BookingSchema);
